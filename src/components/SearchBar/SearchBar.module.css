@@ -1,0 +1,36 @@
+.header {
+    height: 48px;
+    padding: 12px;
+    background-color: rgba(10, 10, 50, 0.9);
+}
+
+
+.form {
+    margin: 0 auto;
+    width: 580px;
+    position: relative;
+}
+
+.input {
+    background-color: aliceblue;
+    width: 550px;
+    flex-grow: 1;
+    height: 28px;
+    font-size: 24px;
+    padding: 8px;
+    padding-left: 16px;
+    border: none;
+    border-radius: 8px;
+    overlay: none;
+}
+
+.btn {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    background-color: aliceblue;
+    font-size: 24px;
+    height: 38px;
+    width: 46px;
+    border: none;
+}
