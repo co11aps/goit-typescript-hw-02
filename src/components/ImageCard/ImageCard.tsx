@@ -1,10 +1,13 @@
-const ImageCard = ({
+import { FC } from "react";
+import { ImageCardProps } from "../ImageCard/ImageCardTypes";
+
+const ImageCard: FC<ImageCardProps> = ({
   data: { urls, alt_description, likes, description },
   handleImgClick,
 }) => {
   function handleClick() {
     const content = {
-      src: urls.regular,
+      urls: urls.regular,
       alt_description,
       likes,
       description,

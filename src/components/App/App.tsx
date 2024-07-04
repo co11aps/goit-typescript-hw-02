@@ -9,22 +9,25 @@ import Modal from "react-modal";
 import ImageModal from "../ImageModal/ImageModal";
 import css from "./App.module.css";
 
+import { Image } from "../API/APITypes";
+import { ModalCotentType } from "./App.types";
+
 Modal.setAppElement("#root");
 
 const App = () => {
-  const [loader, setLoader] = useState(false);
-  const [images, setImages] = useState([]);
-  const [error, setError] = useState(false);
-  const [nothingFoundError, setNothingFoundError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isMoreBtn, setIsMoreBtn] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({});
-  const [totalPages, setTotalPages] = useState(null);
-  const loadMoreBtnRef = useRef(null);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [images, setImages] = useState<Image[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [nothingFoundError, setNothingFoundError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isMoreBtn, setIsMoreBtn] = useState<boolean>(false);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<ModalCotentType | {}>({});
+  const [totalPages, setTotalPages] = useState<number | null>(null);
+  const loadMoreBtnRef = useRef<HTMLDivElement | null>(null);
 
-  const onSubmit = (searchQuery) => {
+  const onSubmit = (searchQuery: string): void => {
     setImages([]);
     setPage(1);
     setTotalPages(null);
@@ -33,7 +36,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    setIsMoreBtn(totalPages && totalPages !== page);
+    setIsMoreBtn(totalPages !== null && totalPages !== page);
   }, [totalPages, page]);
 
   useEffect(() => {
@@ -56,7 +59,7 @@ const App = () => {
         }
         setTotalPages(imgs.total_pages);
         setImages((prevImgs) => [...prevImgs, ...imgs.results]);
-      } catch (error) {
+      } catch (error: any) {
         setError(true);
         console.log(error.message);
       } finally {
@@ -82,7 +85,7 @@ const App = () => {
     document.body.style.overflow = "";
   }
 
-  function handleOpenModal(content) {
+  function handleOpenModal(content: ModalCotentType) {
     setModalContent(content);
     openModal();
   }
