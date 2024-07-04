@@ -23,7 +23,12 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [isMoreBtn, setIsMoreBtn] = useState<boolean>(false);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<ModalCotentType | {}>({});
+  const [modalContent, setModalContent] = useState<ModalCotentType>({
+    urls: "",
+    alt_description: "",
+    likes: null,
+    description: "",
+  });
   const [totalPages, setTotalPages] = useState<number | null>(null);
   const loadMoreBtnRef = useRef<HTMLDivElement | null>(null);
 
@@ -81,7 +86,12 @@ const App = () => {
 
   function closeModal() {
     setIsOpen(false);
-    setModalContent({});
+    setModalContent({
+      urls: "",
+      alt_description: "",
+      likes: null,
+      description: "",
+    });
     document.body.style.overflow = "";
   }
 

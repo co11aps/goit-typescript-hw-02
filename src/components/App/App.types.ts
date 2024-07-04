@@ -1,6 +1,6 @@
 export interface ModalCotentType {
   urls: string;
   alt_description: string;
-  likes: number;
+  likes: number | null;
   description: string;
 }
